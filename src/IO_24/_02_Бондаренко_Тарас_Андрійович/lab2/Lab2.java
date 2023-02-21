@@ -66,7 +66,7 @@ public class Lab2 {
     private static void scanMatrix(byte[][] matrix, Scanner scan) { //Method for filling matrix
         for (byte i = 0; i < matrix.length; i++) {
             for (byte j = 0; j < matrix[i].length; j++) {
-                System.out.print("Enter element" + "[" + i + "]" + "[" + j + "]: ");
+                System.out.printf("Enter element [%d][%d]", i, i);
                 matrix[i][j] = scan.nextByte();
             }
         }
