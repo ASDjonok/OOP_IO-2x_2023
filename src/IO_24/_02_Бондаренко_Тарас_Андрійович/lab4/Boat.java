@@ -1,5 +1,8 @@
 package IO_24._02_Бондаренко_Тарас_Андрійович.lab4;
 
+/**
+ * Class that represents a boat with different characteristics.
+ */
 public class Boat {
     private String name;
     private int price;
@@ -21,18 +24,6 @@ public class Boat {
 
     public int getPrice() {
         return price;
-    }
-
-    public int getMass() {
-        return mass;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getType() {
-        return type;
     }
 
     @Override

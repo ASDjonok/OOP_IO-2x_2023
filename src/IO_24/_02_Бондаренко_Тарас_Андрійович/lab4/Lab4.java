@@ -22,6 +22,11 @@ public class Lab4 {
         printed(boatList);
     }
 
+    /**
+     * Print all characteristics of boats.
+     *
+     * @param boatList List of boats.
+     */
     public static void printed(List<Boat> boatList) {
         for (Boat boat : boatList) {
             System.out.println(boat);
