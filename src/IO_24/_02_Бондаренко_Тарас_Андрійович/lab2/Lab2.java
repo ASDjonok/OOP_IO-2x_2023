@@ -44,16 +44,16 @@ public class Lab2 {
 
         for (byte i = 0; i < matrixC.length; i++) {
             byte largest = Byte.MIN_VALUE; // variable for largest element
-            byte lowest = Byte.MAX_VALUE;// variable for smallest element
+            byte smallest = Byte.MAX_VALUE;// variable for smallest element
             for (byte j = 0; j < matrixC[i].length; j++) {
                 if (i % 2 == 0) {
-                    lowest = (byte) Math.min(lowest, matrixC[i][j]);
+                    smallest = (byte) Math.min(smallest, matrixC[i][j]);
                 } else {
                     largest = (byte) Math.max(largest, matrixC[i][j]);
                 }
             }
             if (i % 2 == 0) {
-                oddSum += lowest;
+                oddSum += smallest;
             } else {
                 evenSum += largest;
             }
