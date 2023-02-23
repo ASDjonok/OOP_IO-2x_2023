@@ -21,8 +21,13 @@ public class Lab1 {
         int m = scan.nextInt();// Entering m
         scan.close();
 
-        if (a >= n || b >= m || a <= -c && n >= -c || b <= 0 && m >= 0) {
+        if (a <= -c && n >= -c || b <= 0 && m >= 0) {
             System.out.println("Error! Division by zero");
+            return;
+        }
+        else if(a > n || b > m){
+            result = 0;
+            System.out.println(result);
             return;
         }
 
