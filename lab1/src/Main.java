@@ -1,16 +1,17 @@
 public class Main {
 
     public static void main(String[] args) {
-        float s = 0, a = 2, b = 1, m = 6, n = 4;
+        float s = 0.0f, a = 2.0f, b = 1.0f, m = 6.0f, n = 4.0f;
+        int c = 1;
 
         for (float i = a; i <= m; i++) {
+            // Перевірка ділення на 0.
+            if (i == -1) {
+                System.out.println("Помилка: ділення на нуль не можливе.");
+                return;
+            }
             for (float j = b; j <= n; j++) {
-                // Перевірка ділення на 0.
-                if (i == -1) {
-                    System.out.println("Помилка: ділення на нуль не можливе.");
-                    return;
-                }
-                s += (i + j) / (i + 1);
+                s += (i + j) / (i + c);
             }
         }
 
