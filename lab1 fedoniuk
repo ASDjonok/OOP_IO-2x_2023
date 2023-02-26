@@ -1,0 +1,96 @@
+import java.util.Scanner;
+
+public class lab1 {
+    public static void main(String[] args) {
+        int C2, C3, C5;
+        var C7 = 0;
+
+        Scanner id = new Scanner(System.in);
+        System.out.print("Enter the student's ID number: ");
+        int idbook = id.nextInt();
+
+        C2 = idbook % 2;
+        C3 = idbook % 3;
+        C5 = idbook % 5;
+        C7 = idbook % 7;
+
+        String[] oper1 = {"+", "-"};
+        String[] oper2 = {"*", "/", "%", "+", "-"};
+        String[] oper3 = {"byte", "short", "int", "long", "char", "float", "double"};
+
+        int C = C3;
+
+        String O1 = oper1[C2];
+        String O2 = oper2[C5];
+        String O3 = oper3[C7];
+
+        System.out.println("C2 is: " + C2 + ", operation is: " + O1);
+        System.out.println("C3 = " + C);
+        System.out.println("C5 is: " + C5 + ", operation is: " + O2);
+        System.out.println("C7 is: " + C7 + ", Type of indexes i and j is: " + O3);
+
+        double i = 0;
+        double j = 0;
+        System.out.println("\nEnter a values for lower limits (i and j) in the "+ O3+" type: ");
+        switch (O3) {
+            case "byte" -> {
+                i = id.nextByte();
+                j = id.nextByte();
+            }
+            case "short" -> {
+                i = id.nextShort();
+                j = id.nextShort();
+            }
+            case "int" -> {
+                i = id.nextInt();
+                j = id.nextInt();
+            }
+            case "long" -> {
+                i = id.nextLong();
+                j = id.nextLong();
+            }
+            case "char" -> {
+                i = id.next().charAt(0);
+                j = id.next().charAt(0);
+            }
+            case "float" -> {
+                i = id.nextFloat();
+                j = id.nextFloat();
+            }
+            case "double" -> {
+                i = id.nextDouble();
+                j = id.nextDouble();
+            }
+        }
+
+        System.out.println("The value of the created variables is: " + i + " and " + j);
+        System.out.println("Enter values for top limits (n and m):");
+        int n, m;
+        n = id.nextInt();
+        m = id.nextInt();
+
+        double sum = 0, res = 0, res2 = 0;
+
+        if ((O1.equals("-") && i + n >= C && i <= C) || i > n || j > m || (C == 0 && i == 0)) {
+            System.out.println("Incorrect input, try another values");
+        } else {
+            for (double a = i; a <= n; a++) {
+                for (double b = j; b <= m; b++) {
+                    switch (O1) {
+                        case "+" -> res = a + C;
+                        case "-" -> res = a - C;
+                    }
+                    switch (O2) {
+                        case "+" -> res2 = a + b;
+                        case "-" -> res2 = a - b;
+                        case "*" -> res2 = a * b;
+                        case "/" -> res2 = a / b;
+                        case "%" -> res2 = a % b;
+                    }
+                    sum += res2 / res;
+                }
+            }
+            System.out.println("Sum is: " + sum);
+        }
+    }
+}
