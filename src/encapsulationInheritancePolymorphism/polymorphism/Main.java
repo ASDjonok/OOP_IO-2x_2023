@@ -22,5 +22,17 @@ public class Main {
         /*for (int i = 0; i < engines.length; i++) {
             System.out.println(engines[i].getPower());
         }*/
+
+//        +
+        int a = 1;
+        int b = 1;
+        int c = a + b;
+        System.out.println(c);
+
+
+        String sA = "1";
+        String sB = "1";
+        String sC = sA + sB;
+        System.out.println(sC);
     }
 }

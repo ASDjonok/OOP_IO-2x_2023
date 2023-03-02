@@ -3,6 +3,7 @@ package encapsulationInheritancePolymorphism.polymorphism;
 public class ElectricEngine extends Engine {
     private String batteryType;
 
+    @Override
     public int getPower() {
         return 20;
     }
