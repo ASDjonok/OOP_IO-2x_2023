@@ -1,0 +1,84 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args)
+    {
+            float s = 0f;
+            double i = 0;
+            double j = 0;
+            double sum_d;
+            double sum_u;
+            Scanner in = new Scanner(System.in);
+            System.out.print("Input a number your record book: \n");
+            int c = in.nextInt();
+            int c2 = c % 2;
+            int c3 = c % 3;
+            int c5 = c % 5;
+            int c7 = c % 7;
+
+            switch (c7){
+                case 0:
+                    i = (byte) i;
+                    j = (byte) j;
+                case 1:
+                    i = (short) i;
+                    j = (short) j;
+                case 2:
+                    i = (int) i;
+                    j = (int) j;
+                case 3:
+                    i = (long) i;
+                    j = (long) j;
+                case 4:
+                    i = (char) i;
+                    j = (char) j;
+                case 5:
+                    i = (float) i;
+                    j = (float) j;
+                case 6:
+                    i = i;
+                    j = j;
+            }
+
+            System.out.print("Input a: ");
+            int a = in.nextInt();
+            System.out.print("Input b: ");
+            int b = in.nextInt();
+            System.out.print("Input n: ");
+            int n = in.nextInt();
+            System.out.print("Input m: ");
+            int m = in.nextInt();
+
+            in.close();
+
+            for(i = a; i <= n; i++)
+            {
+                if(c2 == 0)
+                    sum_d = i+c3;
+                else
+                    sum_d = i -c3;
+                if(sum_d == 0)
+                {
+                  System.out.println("Lol");
+                  break;
+                }
+                else {
+                    for (j = b; j <= m; j++)
+                    {
+                        if (c5 == 0)
+                            sum_u = i*j;
+                         else if (c5 == 1)
+                          sum_u = i/j;
+                        else if (c5 == 2)
+                            sum_u = i%j;
+                        else if (c5 == 3)
+                            sum_u = i+j;
+                        else
+                            sum_u = i-j;
+
+                        s += (double) sum_u / sum_d ;
+                    }
+                }
+            }
+        System.out.println(s);
+    }
+}
