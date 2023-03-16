@@ -18,26 +18,31 @@ public class Lab1 {
         final int M = 2;
 
         final int C = 1;
-        boolean wasDivisionByZero = false;
+//        boolean wasDivisionByZero = false;
 //        todo char
-myLabel:for (int i = A; i <= N && !wasDivisionByZero; i++) {
-            if (i + C == 0) { // todo optimize
+//        todo[clear code] think about avoiding brackets
+        if ((A <= -C && -C <= N) || (B <= 0 && 0 <= M)) {
+            System.out.println("Division by zero!");
+            return;
+        }
+/*myLabel:*/for (int i = A; i <= N /*&& !wasDivisionByZero*/; i++) {
+            /*if (i + C == 0) { // todo optimize
                 System.out.println("Division by zero!");
                 wasDivisionByZero = true;
                 break; //todo flag vs return;
-            }
+            }*/
             for (int j = B; j <= M; j++) {
-                if (j == 0) {
+                /*if (j == 0) {
                     System.out.println("Division by zero!");
                     return;
 //                    wasDivisionByZero = true;
 //                    break myLabel;
-                }
+                }*/
                 s += (double) (i / j) / (i + C);
             }
         }
-        if (!wasDivisionByZero) {
+//        if (!wasDivisionByZero) {
             System.out.println("s = " + s);
-        }
+//        }
     }
 }
