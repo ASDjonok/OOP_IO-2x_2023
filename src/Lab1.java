@@ -13,14 +13,14 @@ public class Lab1 {
 
         }*/
         final int A = -3;
-        final int B = 1;
+        final int B = 0;
         final int N = 2;
         final int M = 2;
 
         final int C = 1;
         boolean wasDivisionByZero = false;
 //        todo char
-        for (int i = A; i <= N && !wasDivisionByZero; i++) {
+myLabel:for (int i = A; i <= N && !wasDivisionByZero; i++) {
             if (i + C == 0) { // todo optimize
                 System.out.println("Division by zero!");
                 wasDivisionByZero = true;
@@ -29,8 +29,9 @@ public class Lab1 {
             for (int j = B; j <= M; j++) {
                 if (j == 0) {
                     System.out.println("Division by zero!");
-                    wasDivisionByZero = true;
-                    break;
+                    return;
+//                    wasDivisionByZero = true;
+//                    break myLabel;
                 }
                 s += (double) (i / j) / (i + C);
             }
