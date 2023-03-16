@@ -1,5 +1,15 @@
 public class Lab1 {
     public static void main(String[] args) {
+//        char c = 'a' + '1';
+        char c = 97;
+//        char c = '1';
+        System.out.println(c);
+        System.out.println((int) c);
+        c++;
+        System.out.println(c);
+        System.out.println((int) c);
+        System.out.println((double)'1'/'3');
+
 //        System.out.println( (double) 0 / 0 );
 //        System.out.println( Math.sqrt(-1) );
         double s = 0;
