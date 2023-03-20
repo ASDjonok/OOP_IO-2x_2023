@@ -1,0 +1,73 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Lab2 {
+    public static void main(String[] args) {
+        int C5, C11, C7;
+        int idbook = 2430;
+
+        C5 = idbook % 5;
+        C7 = idbook % 7;
+        C11 = idbook % 11;
+
+        System.out.println("C5 = " + C5 + " - Action between matrix is: C=a×B, a - const");
+        System.out.println("C7 = " + C7 + " - The matrix elements type is: byte");
+        System.out.println("C11 = " + C11 + " - The action with matrix C is: Find the matrix elements' average value");
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\n Enter the number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print(" Enter the number of columns: ");
+        int cols = sc.nextInt();
+        int min = 0;
+        int max = 0;
+        boolean valid = false;
+        while (!valid) {
+            System.out.print("\n Enter the minimum value of the matrix numbers (-128 to 127): ");
+            min = sc.nextInt();
+            System.out.print(" Enter the maximum value of the matrix numbers (-128 to 127): ");
+            max = sc.nextInt();
+            if (min >= -128 && max <= 127 && min < max) {
+                valid = true;
+            }
+            else {
+                System.out.println("\nInvalid input. Please enter the values again.");
+            }
+        }
+        byte[][] matrix = new byte[rows][cols];
+        Random rand = new Random();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = (byte) (rand.nextInt(max - min + 1) + min);
+            }
+        }
+        System.out.println("\nThe matrix is:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.printf(" %-5d", matrix[i][j]);
+            }
+            System.out.println();
+        }
+
+        System.out.print("\nEnter the constant to multiply the matrix by: ");
+        int constant = sc.nextInt();
+        System.out.println(" The matrix multiplied by " + constant + " is:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.printf(" %-5d", matrix[i][j] * constant);
+            }
+            System.out.println();
+        }
+
+        System.out.println("\n Press enter to search for the average value of the matrix.");
+        sc.nextLine();
+        sc.nextLine();
+        int sum = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                sum += matrix[i][j];
+            }
+        }
+        double average = (double) sum / (rows * cols);
+        System.out.println("The average value of the matrix is: " + average);
+    }
+}
