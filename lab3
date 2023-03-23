@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class lab3 {
+    public static void main(String[] args) {
+
+        int C17 = 2430 % 17;
+        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
+        System.out.println("  C17 = " + C17 + ", So, the task is:  delete all previous occurrences of the last letter of each word of the specified text");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+
+        Scanner scanner = new Scanner(System.in);
+        String input = null;
+        while (input == null || input.isEmpty()) {
+            System.out.print("\nEnter a string: ");
+            input = scanner.nextLine();
+        }
+        try {
+            StringBuilder sb = new StringBuilder(input);
+            String[] words = sb.toString().split("\\s+");
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                char lastLetter = word.charAt(word.length() - 1);
+                String newWord = "";
+                for (int j = 0; j < word.length() - 1; j++) {
+                    if (word.charAt(j) != lastLetter) {
+                        newWord += word.charAt(j);
+                    }
+                }
+                newWord += lastLetter;
+                words[i] = newWord;
+            }
+            System.out.print("\nFinal string: ");
+            System.out.println(String.join(" ", words));
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+}
