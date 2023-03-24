@@ -1,0 +1,118 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class lab4 {
+
+    public static class Student {
+        private int grBook;
+        private String name;
+        private int age;
+        private double gpa;
+        private String faculty;
+
+        public Student(int grBook, String name, int age, double gpa, String faculty) {
+            this.grBook = grBook;
+            this.name = name;
+            this.age = age;
+            this.gpa = gpa;
+            this.faculty = faculty;
+        }
+
+        public int getGrBook() {
+            return grBook;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public double getGpa() {
+            return gpa;
+        }
+
+        public String getFaculty() {
+            return faculty;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int C11 = 2430 % 11;
+        System.out.println("\n  ----------------------------------------------------------------------------------------------------------");
+        System.out.println("          C17 = " + C11 + ", So, the task is:  Define the student class, which consists of at least 5 fields.");
+        System.out.println("  ----------------------------------------------------------------------------------------------------------");
+
+        Student[] students = {
+                new Student(1010, "Вікторія", 21, 84.6, "ФІОТ"),
+                new Student(2010, "Дарія", 20, 79.8, "РТФ"),
+                new Student(3010, "Анатолій", 19, 94.3, "ХТФ"),
+                new Student(4040, "Генадій", 22, 62.0, "ІХФ"),
+                new Student(5050, "Борис", 18, 89.1, "ФММ")
+        };
+
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = false;
+        while (!quit) {
+            // Ask user which field and order to sort by
+            System.out.print("\nEnter the field to sort by (greed book, name, age, gpa, faculty) or enter 'quit' to exit: ");
+            String input = scanner.nextLine();
+
+            if (!input.equals("greed book") && !input.equals("name") && !input.equals("age") && !input.equals("gpa") && !input.equals("faculty") && !input.equals("quit")) {
+                System.out.println("Invalid field to sort by! Please enter 'grBook', 'name', 'age', 'gpa', or 'faculty'.");
+                continue;
+            }
+            if (input.equals("quit")) {
+                quit = true;
+                System.out.println("Thank you for using my program:)");
+                continue;
+            }
+
+            String field = input;
+            System.out.print("Enter the sort order (asc or desc): ");
+            String order = scanner.nextLine();
+
+            // Check if the sort order input is valid
+            if (!order.equals("asc") && !order.equals("desc")) {
+                System.out.println("Invalid sort order! Please enter 'asc' or 'desc'.");
+                continue;
+            }
+
+            // Sort the students array
+            Comparator<Student> comparator = null;
+            switch (field) {
+                case "greed book":
+                    comparator = Comparator.comparingInt(Student::getGrBook);
+                    break;
+                case "name":
+                    comparator = Comparator.comparing(Student::getName);
+                    break;
+                case "age":
+                    comparator = Comparator.comparingInt(Student::getAge);
+                    break;
+                case "gpa":
+                    comparator = Comparator.comparingDouble(Student::getGpa);
+                    break;
+                case "faculty":
+                    comparator = Comparator.comparing(Student::getFaculty);
+                    break;
+            }
+            if (order.equals("desc")) {
+                comparator = comparator.reversed();
+            }
+            Arrays.sort(students, comparator);
+
+            // Print the sorted students array
+            System.out.println("\nSorted by " + field + " (in " + order + "ending order):");
+            System.out.println(String.format("%n%-15s | %-20s | %-4s | %-4s | %-10s", "Greed book", "Name", "Age", "GPA", " Faculty"));
+            System.out.println("----------------------------------------------------------------");
+            for (Student student : students) {
+                System.out.println(String.format("%-15d | %-20s | %-4d | %-3.1f | %-10s", student.getGrBook(), student.getName(), student.getAge(), student.getGpa(), student.getFaculty()));
+            }
+        }
+    }
+}
