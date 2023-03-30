@@ -2,17 +2,17 @@ public class Lab2 {
     public static void main(String[] args) {
         final int A = 2;
         final int[][] MATRIX_B = {
-                {1, 202, 3,1, 202, 3,1, 202, 3,},
-                {202, 3,1, 202, 3,1, 202, 3,},
-                {3,1, 202, 3,1, 202, 3,},
-                {4, 5, 6,},
+                {1, 202, 1, 1, 202, 3, 1, 202, 3,},
+                {1, 202, 1, 1, 202, 3, 1, 202, 3,},
+                {1, 1,   3, 1, 202, 3, 1, 202, 3,},
+//                {4, 5, 6,},
         };
 
         int[][] MATRIX_C = multiplication(A, MATRIX_B);
 
         print(MATRIX_C);
 
-        System.out.println("Sum of smallest elements in every column:" + sumOfSmallestElementsInEveryColumn(MATRIX_C));
+        System.out.println("Sum of smallest elements in every column: " + sumOfSmallestElementsInEveryColumn(MATRIX_C));
 
         /*int[] array = {1, 2, 3};
         int[] array2 = new int[3];
@@ -63,11 +63,13 @@ public class Lab2 {
 
     private static int sumOfSmallestElementsInEveryColumn(final int[][] MATRIX_C) {
 //        todo check different length of rows
+//        todo try to change i and j
+//        todo check repetition of minimal elements
         int sum = 0;
         for (int i = 0; i < MATRIX_C[0].length; i++) {
             int tmpSmallest = MATRIX_C[0][i];
             for (int j = 1; j < MATRIX_C.length; j++) {
-                if (tmpSmallest < MATRIX_C[j][i]) {
+                if (MATRIX_C[j][i] < tmpSmallest) {
                     tmpSmallest = MATRIX_C[j][i];
                 }
             }
