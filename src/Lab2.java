@@ -2,11 +2,17 @@ public class Lab2 {
     public static void main(String[] args) {
         final int A = 2;
         final int[][] MATRIX_B = {
-                {1, 2, 3},
-                {4, 5, 6}
+                {1, 202, 3,1, 202, 3,1, 202, 3,},
+                {202, 3,1, 202, 3,1, 202, 3,},
+                {3,1, 202, 3,1, 202, 3,},
+                {4, 5, 6,},
         };
 
-        int[][] C = calculation(A, MATRIX_B);
+        int[][] MATRIX_C = multiplication(A, MATRIX_B);
+
+        print(MATRIX_C);
+
+        System.out.println("Sum of smallest elements in every column:" + sumOfSmallestElementsInEveryColumn(MATRIX_C));
 
         /*int[] array = {1, 2, 3};
         int[] array2 = new int[3];
@@ -55,7 +61,32 @@ public class Lab2 {
         };*/
     }
 
-    private static int[][] calculation(int A, final int[][] MATRIX_B) {
+    private static int sumOfSmallestElementsInEveryColumn(final int[][] MATRIX_C) {
+//        todo check different length of rows
+        int sum = 0;
+        for (int i = 0; i < MATRIX_C[0].length; i++) {
+            int tmpSmallest = MATRIX_C[0][i];
+            for (int j = 1; j < MATRIX_C.length; j++) {
+                if (tmpSmallest < MATRIX_C[j][i]) {
+                    tmpSmallest = MATRIX_C[j][i];
+                }
+            }
+            sum += tmpSmallest;
+        }
+        return sum;
+    }
+
+    private static void print(final int[][] MATRIX_C) {
+        for (int i = 0; i < MATRIX_C.length; i++) {
+            for (int j = 0; j < MATRIX_C[i].length; j++) {
+//                System.out.print(MATRIX_C[i][j] + "\t");//printf("%4d",
+                System.out.printf("%4d ", MATRIX_C[i][j]);//printf("%4d",
+            }
+            System.out.println();
+        }
+    }
+
+    private static int[][] multiplication(int A, final int[][] MATRIX_B) {
         final int[][] MATRIX_C = new int[MATRIX_B.length][/*MATRIX_B[0].length*/]; // todo !!!DANGER different lengths of rows
 //        final int[][] MATRIX_C = MATRIX_B;
         for (int i = 0; i < MATRIX_B.length; i++) {
