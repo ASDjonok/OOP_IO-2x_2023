@@ -18,7 +18,7 @@ public class Laba2
 
     private static int[][] calculation(int[][] b, int a)
     {
-        int[][]c = new int[b.Length][b[0].Length];
+        int[][]c = new int[b.Length][b[0].Length]; //недопустимий специфікатор рангу: вимагається "," або "]";
         for (int i = 0; i < b.Length; i++)
         {
             c[i] = new int[b[i].Length];
