@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class lab4 {
+public class Lab4 {
 
     public static class Student {
         private int grBook;
@@ -58,7 +58,7 @@ public class lab4 {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
         while (!quit) {
-            // Ask user which field and order to sort by
+
             System.out.print("\nEnter the field to sort by (greed book, name, age, gpa, faculty) or enter 'quit' to exit: ");
             String input = scanner.nextLine();
 
@@ -76,13 +76,11 @@ public class lab4 {
             System.out.print("Enter the sort order (asc or desc): ");
             String order = scanner.nextLine();
 
-            // Check if the sort order input is valid
             if (!order.equals("asc") && !order.equals("desc")) {
                 System.out.println("Invalid sort order! Please enter 'asc' or 'desc'.");
                 continue;
             }
-
-            // Sort the students array
+            
             Comparator<Student> comparator = null;
             switch (field) {
                 case "greed book":
@@ -105,8 +103,7 @@ public class lab4 {
                 comparator = comparator.reversed();
             }
             Arrays.sort(students, comparator);
-
-            // Print the sorted students array
+            
             System.out.println("\nSorted by " + field + " (in " + order + "ending order):");
             System.out.println(String.format("%n%-15s | %-20s | %-4s | %-4s | %-10s", "Greed book", "Name", "Age", "GPA", " Faculty"));
             System.out.println("----------------------------------------------------------------");
