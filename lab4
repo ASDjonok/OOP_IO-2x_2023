@@ -44,7 +44,7 @@ public class Lab4 {
 
         int C11 = 2430 % 11;
         System.out.println("\n  ----------------------------------------------------------------------------------------------------------");
-        System.out.println("          C17 = " + C11 + ", So, the task is:  Define the student class, which consists of at least 5 fields.");
+        System.out.println("          C11 = " + C11 + ", So, the task is:  Define the student class, which consists of at least 5 fields.");
         System.out.println("  ----------------------------------------------------------------------------------------------------------");
 
         Student[] students = {
@@ -80,7 +80,7 @@ public class Lab4 {
                 System.out.println("Invalid sort order! Please enter 'asc' or 'desc'.");
                 continue;
             }
-            
+
             Comparator<Student> comparator = null;
             switch (field) {
                 case "greed book":
@@ -103,7 +103,7 @@ public class Lab4 {
                 comparator = comparator.reversed();
             }
             Arrays.sort(students, comparator);
-            
+
             System.out.println("\nSorted by " + field + " (in " + order + "ending order):");
             System.out.println(String.format("%n%-15s | %-20s | %-4s | %-4s | %-10s", "Greed book", "Name", "Age", "GPA", " Faculty"));
             System.out.println("----------------------------------------------------------------");
