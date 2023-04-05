@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+
 public class Lab2 {
     public static void main(String[] args) {
         int C5, C11, C7;
@@ -28,8 +29,7 @@ public class Lab2 {
             max = sc.nextInt();
             if (min >= -128 && max <= 127 && min < max) {
                 valid = true;
-            }
-            else {
+            } else {
                 System.out.println("\nInvalid input. Please enter the values again.");
             }
         }
@@ -50,24 +50,27 @@ public class Lab2 {
 
         System.out.print("\nEnter the constant to multiply the matrix by: ");
         int constant = sc.nextInt();
+        byte[][] multipliedMatrix = new byte[rows][cols];
         System.out.println(" The matrix multiplied by " + constant + " is:");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.printf(" %-5d", matrix[i][j] * constant);
+                multipliedMatrix[i][j] = (byte) (matrix[i][j] * constant);
+                System.out.printf(" %-5d", multipliedMatrix[i][j]);
             }
             System.out.println();
         }
 
-        System.out.println("\n Press enter to search for the average value of the matrix.");
+        System.out.println("\n Press 'enter' to search for the average value of the matrix.");
         sc.nextLine();
         sc.nextLine();
         int sum = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                sum += matrix[i][j];
+                sum += multipliedMatrix[i][j];
             }
         }
         double average = (double) sum / (rows * cols);
-        System.out.println("The average value of the matrix is: " + average);
+        System.out.println("The average value of the multiplied matrix is: " + average);
     }
 }
+
