@@ -95,7 +95,6 @@ public class Lab2 {
 //                System.exit(0);
             }
         }
-//        todo check repetition of minimal elements
         int sum = 0;
         for (int j = 0; j < MATRIX_C[0].length; j++) {
             int tmpSmallest = MATRIX_C[0][j];
