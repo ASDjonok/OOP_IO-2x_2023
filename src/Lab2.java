@@ -99,12 +99,20 @@ public class Lab2 {
         int sum = 0;
         for (int j = 0; j < MATRIX_C[0].length; j++) {
             int tmpSmallest = MATRIX_C[0][j];
+            boolean valueRepeats = false;
             for (int i = 1; i < MATRIX_C.length; i++) {
                 if (MATRIX_C[i][j] < tmpSmallest) {
                     tmpSmallest = MATRIX_C[i][j];
+                    valueRepeats = false;
+                } else if (MATRIX_C[i][j] == tmpSmallest) {
+                    valueRepeats = true;
                 }
             }
             sum += tmpSmallest;
+
+            if (!valueRepeats) {
+                sum += tmpSmallest;
+            }
         }
         return sum;
     }
