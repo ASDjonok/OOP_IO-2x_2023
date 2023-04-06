@@ -3,7 +3,7 @@ public class Lab2 {
         final int A = 2;
         final int[][] MATRIX_B = {
                 {1, 202, 1, 1, 202, 3, 1, 202, 3,},
-                {1, 202, 1, 1, 202, 3, 1, 202, 3,},
+                {1, 202, 1, 1, 202, 3, 1, 202, 3, 4},
                 {1, 1,   3, 1, 202, 3, 1, 202, 3,},
 //                {4, 5, 6,},
         };
@@ -12,7 +12,15 @@ public class Lab2 {
 
         print(MATRIX_C);
 
-        System.out.println("Sum of smallest elements in every column: " + sumOfSmallestElementsInEveryColumn(MATRIX_C));
+//        System.out.println("Sum of smallest elements in every column: " + sumOfSmallestElementsInEveryColumn(MATRIX_C));
+        try {
+            System.out.println("Sum of smallest elements in every column: " + sumOfSmallestElementsInEveryColumnRenew(MATRIX_C));
+            System.out.println("???...");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("I'm still working...");
 
         /*int[] array = {1, 2, 3};
         int[] array2 = new int[3];
@@ -71,6 +79,29 @@ public class Lab2 {
             for (int j = 1; j < MATRIX_C.length; j++) {
                 if (MATRIX_C[j][i] < tmpSmallest) {
                     tmpSmallest = MATRIX_C[j][i];
+                }
+            }
+            sum += tmpSmallest;
+        }
+        return sum;
+    }
+
+    private static int sumOfSmallestElementsInEveryColumnRenew(final int[][] MATRIX_C) throws Exception {
+//        todo check different length of rows
+        for (int i = 1; i < MATRIX_C.length; i++) {
+            if (MATRIX_C[i].length != MATRIX_C[0].length) {
+                throw new /*Runtime*/Exception("There are different lengths of matrix rows.");
+//                System.err.println("There are different lengths of matrix rows.");
+//                System.exit(0);
+            }
+        }
+//        todo check repetition of minimal elements
+        int sum = 0;
+        for (int j = 0; j < MATRIX_C[0].length; j++) {
+            int tmpSmallest = MATRIX_C[0][j];
+            for (int i = 1; i < MATRIX_C.length; i++) {
+                if (MATRIX_C[i][j] < tmpSmallest) {
+                    tmpSmallest = MATRIX_C[i][j];
                 }
             }
             sum += tmpSmallest;
