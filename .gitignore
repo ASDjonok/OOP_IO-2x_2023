@@ -1,2 +1,4 @@
 # Project exclude paths
 /out/
+# Auto detect text files and perform LF normalization
+* text=auto
