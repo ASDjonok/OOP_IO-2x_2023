@@ -1,6 +1,11 @@
 public class Lab3 {
     public static void main(String[] args) {
         String s = "ASD";
+
+        StringBuilder stringBuilder = new StringBuilder("ASD");
+
+        stringBuilder.append("A");
+
         String s2 = s;
         System.out.println("s2 = " + s2);
         System.out.println(s == s2); // true?
@@ -18,8 +23,13 @@ public class Lab3 {
 
 //      String Pool
         String s4 = "ASD";
-        System.out.println(s4 == s2); // true?
-        System.out.println(s4.equals(s2)); // (true)
+//        String s5 = new String("ASD");
+        String s5 = "AS";
+        s5 += "D";
+        System.out.println(s4 == s5); // true? (SP)
+        System.out.println(s4.equals(s5)); // (true)
+
+
 
         System.out.println("Done!");
     }
