@@ -8,15 +8,25 @@ public class Lab1
          c3 = 0
          o2 = *
          c7 = short */
-    
 
-        calculation(4, 3, 10, 10, 11, false);
+        // var A = 4;
+        // short B = 3;
+        // var N = 10;
+        // var M = 10;
+        //
+        // var C = 1;
+        // var s = 0;
+        //
+        // bool divisionByZero=false;
+
+
+        Calculation(4, 3, 10, 10, 1, false);
     }
 
-    public static void calculation(int A, int C, int N, short B, int M, bool divisionByZero)
+    public static void Calculation(int A, int C, int N, short B, int M, bool divisionByZero)
     {
-        double s = 0;
-        if (A <= -C && -C <= N)
+        var s = 0;
+        if ((A <= -C && -C <= N) || (B <= 0 && 0 <= M))
         {
             Console.WriteLine("Division by zero!");
             return;
@@ -24,7 +34,12 @@ public class Lab1
 
         for (int i = A; i <= N; i++)
         {
-           
+            if (i + C == 0)
+            {
+                Console.WriteLine("Division by zero!");
+                divisionByZero = true;
+                break;
+            }
 
             for (short j = B; j <= M; j++)
             {
@@ -34,7 +49,7 @@ public class Lab1
                     break;
                 }
 
-                s +=(double)(i * j) / (i + C);
+                s += (i * j) / (i + C);
             }
         }
 
