@@ -23,6 +23,8 @@ public class Lab_1 {
             b = input.nextInt();
         } while (b > m);
 
+        input.close();
+
         if ((a <= 0) && (n >= 0)) {
             System.out.println("Error, division by zero, shutting down!");
             System.exit(1);

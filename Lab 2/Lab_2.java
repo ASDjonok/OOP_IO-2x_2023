@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Lab_2 {
 
@@ -23,7 +22,7 @@ public class Lab_2 {
     }
 
     public static void main(String[] args) {
-        short a, rows = 0, columns = 0, width;
+        short a, rows = 0, columns = 0;
         String format;
         
         Scanner input = new Scanner(System.in);
