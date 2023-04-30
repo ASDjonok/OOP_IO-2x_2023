@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Comparator;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -22,10 +23,9 @@ public class Main {
         Cosmetic[] arr = new Cosmetic[quantity];
 
         for (int i = 0; i < quantity; i++) {
-            System.out.println("Введіть назву об'єкта №" + (i + 1)+": ");
+            System.out.println("Введіть назву об'єкта №" + (i + 1) + ": ");
             String name = scanner.next();
             while (true) {
-
                 System.out.println("Бажаєте заповнить об'єкт №" + (i + 1) + " випадковими значеннями?(Введіть так або ні)");
                 String anwser = scanner.next();
                 if (anwser.equalsIgnoreCase("так")) {
@@ -176,70 +176,59 @@ public class Main {
             }
         }
         System.out.println("Масив відсортований за зростанням:");
-        if (num1==1){
+        if (num1 == 1) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getPrice_in_$));
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getPrice_in_$());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getPrice_in_$());
             }
-        }
-        else if(num1==2){
+        } else if (num1 == 2) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getHealth_damage_from1to10));
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getHealth_damage_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getHealth_damage_from1to10());
             }
-        }
-        else if(num1==3){
+        } else if (num1 == 3) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getAttractiveness_from1to10));
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getAttractiveness_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getAttractiveness_from1to10());
             }
-        }
-        else if(num1==4){
+        } else if (num1 == 4) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getQuality_from1to10));
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getQuality_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getQuality_from1to10());
             }
-        }
-        else if(num1==5){
+        } else if (num1 == 5) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getBrightness_from1to10));
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getBrightness_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getBrightness_from1to10());
             }
         }
         System.out.println("Масив відсортований за спаданням:");
-        if (num2==1){
+        if (num2 == 1) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getPrice_in_$).reversed());
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getPrice_in_$());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getPrice_in_$());
             }
-        }
-        else if(num2==2){
+        } else if (num2 == 2) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getHealth_damage_from1to10).reversed());
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getHealth_damage_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getHealth_damage_from1to10());
             }
-        }
-        else if(num2==3){
+        } else if (num2 == 3) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getAttractiveness_from1to10).reversed());
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getAttractiveness_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getAttractiveness_from1to10());
             }
-        }
-        else if(num2==4){
+        } else if (num2 == 4) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getQuality_from1to10).reversed());
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getQuality_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getQuality_from1to10());
             }
-        }
-        else if(num2==5){
+        } else if (num2 == 5) {
             Arrays.sort(arr, Comparator.comparingInt(Cosmetic::getBrightness_from1to10).reversed());
-            for(Cosmetic i: arr){
-                System.out.println(i.getName()+" - "+i.getBrightness_from1to10());
+            for (Cosmetic i : arr) {
+                System.out.println(i.getName() + " - " + i.getBrightness_from1to10());
             }
         }
-
-
-
 
 
     }

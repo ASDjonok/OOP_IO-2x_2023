@@ -1,15 +1,16 @@
 import java.util.Random;
 public class Cosmetic {
-    public String name;
-    public int price_in_$;
-    public int health_damage_from1to10;
-    public int attractiveness_from1to10;
-    public int quality_from1to10;
-    public int brightness_from1to10;
+    private String name;
+    private int price_in_$;
+    private int health_damage_from1to10;
+    private int attractiveness_from1to10;
+    private int quality_from1to10;
+    private int brightness_from1to10;
 
 
     public Cosmetic(String name) {
         Random random = new Random();
+
         this.name= name;
         this.price_in_$ = random.nextInt(1000) + 1;;
         this.health_damage_from1to10 = random.nextInt(11);
@@ -19,6 +20,7 @@ public class Cosmetic {
     }
 
     public Cosmetic(String name, int price_in_$, int health_damage_from1to10, int attractiveness_from1to10, int quality_from1to10, int brightness_from1to10) {
+        Random random = new Random();
         this.name= name;
         this.price_in_$ = price_in_$;
         this.health_damage_from1to10 = health_damage_from1to10;
