@@ -107,7 +107,6 @@ public class Lab2 {
                     valueRepeats = true;
                 }
             }
-            sum += tmpSmallest;
 
             if (!valueRepeats) {
                 sum += tmpSmallest;
