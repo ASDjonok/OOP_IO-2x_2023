@@ -7,32 +7,55 @@ public class Lab_1 {
 
         Scanner input = new Scanner(System.in);
         
-        System.out.print("Enter n: ");
-        n = input.nextInt();
-
-        System.out.print("Enter m: ");
-        m = input.nextInt();
+        do {
+            try {
+                System.out.print("Enter n: ");
+                n = input.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("N must be an integer.");
+                input.nextLine();
+            }
+        } while (true);
 
         do {
-            System.out.print("Enter a (can't be above n): ");
-            a = input.nextInt();
-        } while (a > n);
+            try {
+                System.out.print("Enter m: ");
+                m = input.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("M must be an integer.");
+                input.nextLine();
+            }
+        } while (true);
 
         do {
-            System.out.print("Enter b (can't be above m): ");
-            b = input.nextInt();
-        } while (b > m);
+            try {
+                System.out.print("Enter a: ");
+                a = input.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("A must be an integer.");
+                input.nextLine();
+            }
+        } while (true);
+
+        do {
+            try {
+                System.out.print("Enter b: ");
+                b = input.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("B must be an integer.");
+                input.nextLine();
+            }
+        } while (true);
 
         input.close();
 
-        if ((a <= 0) && (n >= 0)) {
-            System.out.println("Error, division by zero, shutting down!");
-            System.exit(1);
-        }
-
-        for (int i = a; i < n; i++) {
-            for (int j = b; j < m; j++) {
-                s += i * j / i;
+        for (int i = a; i <= n; i++) {
+            for (int j = b; j <= m; j++) {
+                s += j;
             }
         }
 
