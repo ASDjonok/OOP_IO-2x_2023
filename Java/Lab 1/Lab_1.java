@@ -32,7 +32,7 @@ public class Lab_1 {
 
         input.close();
 
-        float s = ((float)(b + m) / 2) * (m - b + 1) * (n - a + 1);
+        float s = ((float) (b + m) / 2) * (m - b + 1) * (n - a + 1);
 
         System.out.println("S = " + s);
     }
