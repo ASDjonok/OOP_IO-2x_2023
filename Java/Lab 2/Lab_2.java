@@ -43,22 +43,25 @@ public class Lab_2 {
     public static void main(String[] args) {
         short a, rows = 0, columns = 0;
         String format;
-        
+
         Scanner input = new Scanner(System.in);
 
-        a = protectedInput("Input a constant to multipy a matrix by: ", "A constant must be a short-data type integer, try again.", input);
-        
+        a = protectedInput("Input a constant to multipy a matrix by: ",
+                "A constant must be a short-data type integer, try again.", input);
+
         System.out.println();
         System.out.println("Input size of the matrix.");
 
         do {
-            rows = protectedInput("Rows: ", "A number of rows must be a short-data type integer, try again.", input);
+            rows = protectedInput("Rows: ",
+                    "A number of rows must be a short-data type integer, try again.", input);
         } while (rows <= 0);
-        
+
         do {
-            columns = protectedInput("Columns: ", "A number of columns must be a short-data type integer, try again.", input);
+            columns = protectedInput("Columns: ",
+                    "A number of columns must be a short-data type integer, try again.", input);
         } while (columns <= 0);
-        
+
         input.close();
 
         short[][] matrix_B = new short[rows][columns];
