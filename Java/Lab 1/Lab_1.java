@@ -1,63 +1,38 @@
 import java.util.Scanner;
 
 public class Lab_1 {
+
+    public static int protectedInput(String variable_to_read, Scanner input) {
+        int read_variable;
+        do {
+            try {
+                System.out.printf("Enter %s: ", variable_to_read);
+                read_variable = input.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.printf("%s must be an integer.\n", variable_to_read.toUpperCase());
+                input.nextLine();
+            }
+        } while (true);
+        return read_variable;
+    }
+
     public static void main(String[] args) {
         int n, m, a, b;
-        float s = 0;
 
         Scanner input = new Scanner(System.in);
-        
-        do {
-            try {
-                System.out.print("Enter n: ");
-                n = input.nextInt();
-                break;
-            } catch (Exception e) {
-                System.out.println("N must be an integer.");
-                input.nextLine();
-            }
-        } while (true);
 
-        do {
-            try {
-                System.out.print("Enter m: ");
-                m = input.nextInt();
-                break;
-            } catch (Exception e) {
-                System.out.println("M must be an integer.");
-                input.nextLine();
-            }
-        } while (true);
+        n = protectedInput("n", input);
 
-        do {
-            try {
-                System.out.print("Enter a: ");
-                a = input.nextInt();
-                break;
-            } catch (Exception e) {
-                System.out.println("A must be an integer.");
-                input.nextLine();
-            }
-        } while (true);
+        m = protectedInput("m", input);
 
-        do {
-            try {
-                System.out.print("Enter b: ");
-                b = input.nextInt();
-                break;
-            } catch (Exception e) {
-                System.out.println("B must be an integer.");
-                input.nextLine();
-            }
-        } while (true);
+        a = protectedInput("a", input);
+
+        b = protectedInput("b", input);
 
         input.close();
 
-        for (int i = a; i <= n; i++) {
-            for (int j = b; j <= m; j++) {
-                s += j;
-            }
-        }
+        float s = ((float)(b + m) / 2) * (m - b + 1) * (n - a + 1);
 
         System.out.println("S = " + s);
     }

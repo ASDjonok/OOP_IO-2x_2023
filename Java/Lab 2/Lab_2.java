@@ -2,6 +2,25 @@ import java.util.Scanner;
 
 public class Lab_2 {
 
+    public static short protectedInput(String inputPrompt, String errorMessage, Scanner input) {
+        short read_variable;
+
+        do {
+            try {
+                System.out.println();
+                System.out.print(inputPrompt);
+
+                read_variable = input.nextShort();
+                break;
+            } catch (Exception e) {
+                System.out.println(errorMessage);
+                input.nextLine();
+            }
+        } while (true);
+
+        return read_variable;
+    }
+
     public static String format(int number) {
         int width = String.valueOf(number).length() + 1;
         String format = "|%" + width + "d ";
@@ -27,41 +46,20 @@ public class Lab_2 {
         
         Scanner input = new Scanner(System.in);
 
-        do {
-            try {
-                System.out.println();
-                System.out.print("Input a constant to multipy a matrix by: ");
-
-                a = input.nextShort();
-                break;
-            } catch (Exception e) {
-                System.out.println("A constant must be a short-data type integer, try again.");
-                input.nextLine();
-            }
-        } while (true);
-
+        a = protectedInput("Input a constant to multipy a matrix by: ", "A constant must be a short-data type integer, try again.", input);
+        
         System.out.println();
         System.out.println("Input size of the matrix.");
 
         do {
-            try {
-                System.out.print("Rows: ");
-                rows = input.nextShort();
-            } catch (Exception e) {
-                System.out.println("A number of rows must be a short-data type integer, try again.");
-                input.nextLine();
-            }
+            rows = protectedInput("Rows: ", "A number of rows must be a short-data type integer, try again.", input);
         } while (rows <= 0);
-
+        
         do {
-            try {
-                System.out.print("Columns: ");
-                columns = input.nextShort();
-            } catch (Exception e) {
-                System.out.println("A number of columns must be a short-data type integer, try again.");
-                input.nextLine();
-            }
+            columns = protectedInput("Columns: ", "A number of columns must be a short-data type integer, try again.", input);
         } while (columns <= 0);
+        
+        input.close();
 
         short[][] matrix_B = new short[rows][columns];
 
@@ -85,8 +83,8 @@ public class Lab_2 {
 
         format = format(rows * columns * a);
 
-        for (short i = 0; i < rows; i++) {
-            for (short j = 0; j < columns; j++) {
+        for (short i = 0; i < matrix_B.length; i++) {
+            for (short j = 0; j < matrix_B[i].length; j++) {
                 matrix_B[i][j] *= (short) (a);
 
                 System.out.printf(format, matrix_B[i][j]);
@@ -101,7 +99,5 @@ public class Lab_2 {
         for (short[] row : matrix_B) {
             System.out.println(average(row));
         }
-
-        input.close();
     }
 }
