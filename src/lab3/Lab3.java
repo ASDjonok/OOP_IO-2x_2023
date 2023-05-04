@@ -1,3 +1,5 @@
+package lab3;
+
 public class Lab3 {
     private static final int REPETITION_NUMBER = 10;
     public static void main(String[] args) {
