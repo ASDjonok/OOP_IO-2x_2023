@@ -2,14 +2,19 @@ fn main() {
     // use text_io::scan;
     use text_io::read;
 
-    print!("Input: ");
+    print!("Enter m: ");
+    let m: f32 = read!();
 
-    // read until a whitespace and try to convert what was read into an i32
-    let a: i32 = read!();
+    print!("Enter n: ");
+    let n: f32 = read!();
 
-    /* let i: u32;
-    print!("Input: ");
-    scan!("{}", i); */
+    print!("Enter a: ");
+    let a: f32 = read!();
 
-    println!("You have input: {}", a);
+    print!("Enter b: ");
+    let b: f32 = read!();
+
+    let s: f32 = ((b + m) / 2.0) * (m - b + 1.0) * (n - a + 1.0);
+
+    println!("S= {}", s);
 }
