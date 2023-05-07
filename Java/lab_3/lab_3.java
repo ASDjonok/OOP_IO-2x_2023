@@ -15,8 +15,8 @@ public class lab_3 {
         return pTextLower;
     } */
     
-    public static void cSubUtil(String string, int leftBoundary, int rightBoundary)
-    {
+    public static void cSubUtil(StringBuilder stringbuilder, int leftBoundary, int rightBoundary) {
+        String string = stringbuilder.toString().toLowerCase().replaceAll("[^a-z]","");
         // check if the indices lie in the range of string
         // and also if it is palindrome
         while (leftBoundary >= 0 && rightBoundary < string.length() && string.toLowerCase().charAt(leftBoundary) == string.toLowerCase().charAt(rightBoundary)) {
@@ -33,7 +33,7 @@ public class lab_3 {
         return;
     }
 
-    public static int longestPalSubstr(String string)
+    public static int longestPalSubstr(StringBuilder string)
     {
         result = "";
         maxStrLength = 1;
@@ -45,16 +45,15 @@ public class lab_3 {
             // check for even length palindromes
             cSubUtil(string, i, i + 1);
         }
-        System.out.println("Longest palindrome substring is: " + result);
-        return maxStrLength;
+        System.out.println("Longest palindrome substring is: " + compareStrings(string));
+        return compareStrings(string).length();
     }
 
     public static String compareStrings(StringBuilder builder) {
-        System.out.println(result);
-        for (int leftBoundary = 0; leftBoundary < builder.length(); leftBoundary++) {
-            for (int rightBoundary = builder.length(); rightBoundary > 0; rightBoundary--) {
-                if (result.equals(builder.substring(rightBoundary, rightBoundary).toString().toLowerCase().replaceAll("[^a-z]",""))) {
-                    return builder.substring(rightBoundary, rightBoundary).toString();
+        for (int leftBoundary = 0; leftBoundary <= builder.length(); leftBoundary++) {
+            for (int rightBoundary = builder.length(); leftBoundary >= 0; rightBoundary--) {
+                if (result.equals(builder.substring(leftBoundary, rightBoundary).toString().toLowerCase().replaceAll("[^a-z]",""))) {
+                    return builder.substring(leftBoundary, rightBoundary).toString();
                 }
             }
         }
@@ -63,12 +62,8 @@ public class lab_3 {
 
     public static void main(String[] args) {
         StringBuilder stringToDetect = new StringBuilder("Eva, can I see bees in a cave?");
-        String stripped = stringToDetect.toString().toLowerCase().replaceAll("[^a-z]","");
 
         System.out.println("Initial string: " + stringToDetect.toString());
-        System.out.println("Length is: " + longestPalSubstr(stripped));
-        System.out.println(compareStrings(stringToDetect));
-
-        // System.out.println("Eva, can I see bees in a cave?".length());
+        System.out.println("Length is: " + longestPalSubstr(stringToDetect));
     }
 }
