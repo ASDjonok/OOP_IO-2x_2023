@@ -1,10 +1,10 @@
 fun protectedInput(variableName: String): Int {
     do {
         try {
-            print("Enter $variableName: ");
+            print("Enter $variableName: ")
             return readln().toInt()
         } catch (e: Exception) {
-            println("${variableName.uppercase()} must be an integer!");
+            println("${variableName.uppercase()} must be an integer!")
         }
     } while (true)
 }
