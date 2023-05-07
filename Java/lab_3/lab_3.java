@@ -15,7 +15,7 @@ public class lab_3 {
         return pTextLower;
     } */
     
-    static void cSubUtil(String string, int leftBoundary, int rightBoundary)
+    public static void cSubUtil(String string, int leftBoundary, int rightBoundary)
     {
         // check if the indices lie in the range of string
         // and also if it is palindrome
@@ -33,7 +33,7 @@ public class lab_3 {
         return;
     }
 
-    static int longestPalSubstr(String string)
+    public static int longestPalSubstr(String string)
     {
         result = "";
         maxStrLength = 1;
@@ -49,11 +49,26 @@ public class lab_3 {
         return maxStrLength;
     }
 
+    public static String compareStrings(StringBuilder builder) {
+        System.out.println(result);
+        for (int leftBoundary = 0; leftBoundary < builder.length(); leftBoundary++) {
+            for (int rightBoundary = builder.length(); rightBoundary > 0; rightBoundary--) {
+                if (result.equals(builder.substring(rightBoundary, rightBoundary).toString().toLowerCase().replaceAll("[^a-z]",""))) {
+                    return builder.substring(rightBoundary, rightBoundary).toString();
+                }
+            }
+        }
+        return "";
+    }
+
     public static void main(String[] args) {
         StringBuilder stringToDetect = new StringBuilder("Eva, can I see bees in a cave?");
-        String stripped = stringToDetect.toString().replaceAll("[\\.,:-\\?]? ?", "");
+        String stripped = stringToDetect.toString().toLowerCase().replaceAll("[^a-z]","");
 
         System.out.println("Initial string: " + stringToDetect.toString());
         System.out.println("Length is: " + longestPalSubstr(stripped));
+        System.out.println(compareStrings(stringToDetect));
+
+        // System.out.println("Eva, can I see bees in a cave?".length());
     }
 }
