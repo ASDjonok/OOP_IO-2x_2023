@@ -3,17 +3,6 @@ package OOP.Java.lab_3;
 public class lab_3 {
     static int maxStrLength;
     static String result;
-
-    /* public static StringBuilder StringBuilderLowerCase(StringBuilder pText) {
-        StringBuilder pTextLower = new StringBuilder(pText);
-        for (int idx = 0; idx < pText.length(); idx++) {
-            char c = pText.charAt(idx);
-            if (c >= 65 && c <= 65 + 27) {
-                pTextLower.setCharAt(idx, (char) ((int) (pText.charAt(idx)) | 32));
-            }
-        }
-        return pTextLower;
-    } */
     
     public static void cSubUtil(StringBuilder stringbuilder, int leftBoundary, int rightBoundary) {
         String string = stringbuilder.toString().toLowerCase().replaceAll("[^a-z]","");
