@@ -18,17 +18,12 @@ public class Lab_1 {
     }
 
     public static void main(String[] args) {
-        int n, m, a, b;
-
         Scanner input = new Scanner(System.in);
 
-        n = protectedInput("n", input);
-
-        m = protectedInput("m", input);
-
-        a = protectedInput("a", input);
-
-        b = protectedInput("b", input);
+        final int n = protectedInput("n", input);
+        final int m = protectedInput("m", input);
+        final int a = protectedInput("a", input);
+        final int b = protectedInput("b", input);
 
         input.close();
 

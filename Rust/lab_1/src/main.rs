@@ -1,20 +1,22 @@
+fn protected_read(variable_name: &str) -> i32 {
+    use text_io::try_read;
+    loop {
+        print!("Enter {}: ", variable_name);
+        let read_result: Result<i32, _> = try_read!();
+        match read_result {
+            Ok(read_integer) => return read_integer,
+            Err(_e) => println!("{} must be an integer!", variable_name.to_uppercase()),
+        }
+    }
+}
+
 fn main() {
-    // use text_io::scan;
-    use text_io::read;
+    let n: i32 = protected_read("n");
+    let m: i32 = protected_read("m");
+    let a: i32 = protected_read("a");
+    let b: i32 = protected_read("b");
 
-    print!("Enter m: ");
-    let m: f32 = read!();
+    let s: f32 = ((b + m) as f32 / 2f32) * ((m - b + 1) * (n - a + 1)) as f32;
 
-    print!("Enter n: ");
-    let n: f32 = read!();
-
-    print!("Enter a: ");
-    let a: f32 = read!();
-
-    print!("Enter b: ");
-    let b: f32 = read!();
-
-    let s: f32 = ((b + m) / 2.0) * (m - b + 1.0) * (n - a + 1.0);
-
-    println!("S= {}", s);
+    println!("S = {}", s);
 }
