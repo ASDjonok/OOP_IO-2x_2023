@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class lab_1 {
     
     public static int protectedInput(String variableToRead, Scanner input) {
-        int readVariable;
         do {
             try {
                 System.out.printf("Enter %s: ", variableToRead);
