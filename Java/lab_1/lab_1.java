@@ -2,19 +2,19 @@ import java.util.Scanner;
 
 public class lab_1 {
     
-    public static int protectedInput(String variable_to_read, Scanner input) {
-        int read_variable;
+    public static int protectedInput(String variableToRead, Scanner input) {
+        int readVariable;
         do {
             try {
-                System.out.printf("Enter %s: ", variable_to_read);
-                read_variable = input.nextInt();
+                System.out.printf("Enter %s: ", variableToRead);
+                readVariable = input.nextInt();
                 break;
             } catch (Exception e) {
-                System.out.printf("%s must be an integer.\n", variable_to_read.toUpperCase());
+                System.out.printf("%s must be an integer.\n", variableToRead.toUpperCase());
                 input.nextLine();
             }
         } while (true);
-        return read_variable;
+        return readVariable;
     }
 
     public static void main(String[] args) {
