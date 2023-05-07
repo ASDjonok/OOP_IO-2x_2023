@@ -7,14 +7,12 @@ public class lab_1 {
         do {
             try {
                 System.out.printf("Enter %s: ", variableToRead);
-                readVariable = input.nextInt();
-                break;
+                return input.nextInt();
             } catch (Exception e) {
                 System.out.printf("%s must be an integer.\n", variableToRead.toUpperCase());
                 input.nextLine();
             }
         } while (true);
-        return readVariable;
     }
 
     public static void main(String[] args) {
@@ -27,7 +25,7 @@ public class lab_1 {
 
         input.close();
 
-        float s = ((float) (b + m) / 2) * (m - b + 1) * (n - a + 1);
+        final float s = ((float) (b + m) / 2) * (m - b + 1) * (n - a + 1);
 
         System.out.println("S = " + s);
     }
