@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Lab_2 {
+public class lab_2 {
 
     public static short protectedInput(String inputPrompt, String errorMessage, Scanner input) {
         short read_variable;

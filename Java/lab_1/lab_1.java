@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class Lab_1 {
-
+public class lab_1 {
+    
     public static int protectedInput(String variable_to_read, Scanner input) {
         int read_variable;
         do {
