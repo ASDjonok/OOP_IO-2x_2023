@@ -1,3 +1,5 @@
+package OOP.Java.lab_1
+
 fun protectedInput(variableName: String): Int {
     do {
         try {

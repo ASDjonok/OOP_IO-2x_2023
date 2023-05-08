@@ -1,3 +1,5 @@
+package OOP.Java.lab_2;
+
 import java.util.Scanner;
 
 public class lab_2 {
@@ -23,9 +25,8 @@ public class lab_2 {
 
     public static String format(int number) {
         int width = String.valueOf(number).length() + 1;
-        String format = "|%" + width + "d ";
 
-        return format;
+        return "|%" + width + "d ";
     }
 
     public static double average(short[] row) {
@@ -35,18 +36,15 @@ public class lab_2 {
             sum += element;
         }
 
-        double result = sum / row.length;
-
-        return result;
+        return (double) sum / row.length;
     }
 
     public static void main(String[] args) {
-        short a, rows = 0, columns = 0;
-        String format;
+        short rows, columns;
 
         Scanner input = new Scanner(System.in);
 
-        a = protectedInput("Input a constant to multipy a matrix by: ",
+        final short a = protectedInput("Input a constant to multiply a matrix by: ",
                 "A constant must be a short-data type integer, try again.", input);
 
         System.out.println();
@@ -69,7 +67,7 @@ public class lab_2 {
         System.out.println();
         System.out.println("Matrix B:");
 
-        format = format(rows * columns);
+        String format = format(rows * columns);
 
         for (short i = 0; i < rows; i++) {
             for (short j = 0; j < columns; j++) {
@@ -88,7 +86,7 @@ public class lab_2 {
 
         for (short i = 0; i < matrix_B.length; i++) {
             for (short j = 0; j < matrix_B[i].length; j++) {
-                matrix_B[i][j] *= (short) (a);
+                matrix_B[i][j] *= (a);
 
                 System.out.printf(format, matrix_B[i][j]);
             }

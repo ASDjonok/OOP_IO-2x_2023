@@ -1,3 +1,5 @@
+package OOP.Java.lab_1;
+
 import java.util.Scanner;
 
 public class lab_1 {
