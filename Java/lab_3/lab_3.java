@@ -41,8 +41,8 @@ public class lab_3 {
     public static String compareStrings(StringBuilder builder) {
         for (int leftBoundary = 0; leftBoundary <= builder.length(); leftBoundary++) {
             for (int rightBoundary = builder.length(); leftBoundary >= 0; rightBoundary--) {
-                if (result.equals(builder.substring(leftBoundary, rightBoundary).toString().toLowerCase().replaceAll("[^a-z]",""))) {
-                    return builder.substring(leftBoundary, rightBoundary).toString();
+                if (result.equals(builder.substring(leftBoundary, rightBoundary).toLowerCase().replaceAll("[^a-z]",""))) {
+                    return builder.substring(leftBoundary, rightBoundary);
                 }
             }
         }
