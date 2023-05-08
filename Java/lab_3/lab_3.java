@@ -19,7 +19,6 @@ public class lab_3 {
             result = string.substring(leftBoundary + 1, rightBoundary);
             maxStrLength = rightBoundary - leftBoundary - 1;
         }
-        return;
     }
 
     public static int longestPalSubstr(StringBuilder string)
@@ -40,7 +39,7 @@ public class lab_3 {
 
     public static String compareStrings(StringBuilder builder) {
         for (int leftBoundary = 0; leftBoundary <= builder.length(); leftBoundary++) {
-            for (int rightBoundary = builder.length(); leftBoundary >= 0; rightBoundary--) {
+            for (int rightBoundary = builder.length(); rightBoundary >= leftBoundary; rightBoundary--) {
                 if (result.equals(builder.substring(leftBoundary, rightBoundary).toLowerCase().replaceAll("[^a-z]",""))) {
                     return builder.substring(leftBoundary, rightBoundary);
                 }
@@ -52,7 +51,7 @@ public class lab_3 {
     public static void main(String[] args) {
         StringBuilder stringToDetect = new StringBuilder("Eva, can I see bees in a cave?");
 
-        System.out.println("Initial string: " + stringToDetect.toString());
+        System.out.println("Initial string: " + stringToDetect);
         System.out.println("Length is: " + longestPalSubstr(stringToDetect));
     }
 }
