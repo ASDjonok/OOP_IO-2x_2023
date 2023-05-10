@@ -1,0 +1,184 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Letter {
+    private char value;
+
+    public Letter(char value) {
+        this.value = value;
+    }
+
+    public char getValue() {
+        return value;
+    }
+}
+
+class Word {
+    private List<Letter> letters = new ArrayList<>();
+
+    public Word(String input) {
+        for (char c : input.toCharArray()) {
+            letters.add(new Letter(c));
+        }
+    }
+
+    public List<Letter> getLetters() {
+        return letters;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Letter letter : letters) {
+            sb.append(letter.getValue());
+        }
+        return sb.toString();
+    }
+}
+
+class PunctuationMark {
+    private char value;
+
+    public PunctuationMark(char value) {
+        this.value = value;
+    }
+
+    public char getValue() {
+        return value;
+    }
+}
+
+class Sentence {
+    private List<Object> elements = new ArrayList<>();
+
+    public Sentence(String input) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                sb.append(c);
+            } else {
+                if (sb.length() > 0) {
+                    elements.add(new Word(sb.toString()));
+                    sb.setLength(0);
+                }
+                elements.add(new PunctuationMark(c));
+            }
+        }
+        if (sb.length() > 0) {
+            elements.add(new Word(sb.toString()));
+        }
+    }
+
+    public List<Object> getElements() {
+        return elements;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Object element : elements) {
+            if (element instanceof Word) {
+                sb.append(((Word) element).toString());
+            } else {
+                sb.append(((PunctuationMark) element).getValue());
+            }
+        }
+        return sb.toString();
+    }
+}
+
+class Text {
+    private List<Sentence> sentences = new ArrayList<>();
+
+    public Text(String input) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            if (c == '.' || c == '?' || c == '!' || c == ',') {
+                sb.append(c);
+                sentences.add(new Sentence(sb.toString()));
+                sb.setLength(0);
+            } else {
+                sb.append(c);
+            }
+        }
+        if (sb.length() > 0) {
+            sentences.add(new Sentence(sb.toString()));
+        }
+    }
+
+    public List<Sentence> getSentences() {
+        return sentences;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Sentence sentence : sentences) {
+            sb.append(sentence.toString());
+        }
+        return sb.toString();
+    }
+}
+
+public class Lab5 {
+    public static void main(String[] args) {
+        int C17 = 2430 % 17;
+        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
+        System.out.println("  C17 = " + C17 + ", So, the task is:  delete all previous occurrences of the last letter of each word of the specified text.");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------");
+
+        Scanner scanner = new Scanner(System.in);
+        boolean isDone = false;
+        while (!isDone) {
+            System.out.print("\nEnter a string or type 'q' to quit: ");
+            String input = scanner.nextLine().trim();
+            if (input.equals("q")) {
+                System.out.print("\n The work is completed.");
+                isDone = true;
+            } else if (input.isEmpty()) {
+                System.out.println("Error: Input string is empty. Please enter a non-empty string.");
+            } else {
+                try {
+                    StringBuilder sb = new StringBuilder(input);
+                    String[] words = sb.toString().split("\\s+");
+                    for (int i = 0; i < words.length; i++) {
+                        String word = words[i];
+                        char lastChar = word.charAt(word.length() - 1);
+                        if (!Character.isLetterOrDigit(lastChar)) {
+                            int lastLetterIndex = -1;
+                            for (int j = word.length() - 2; j >= 0; j--) {
+                                if (Character.isLetter(word.charAt(j))) {
+                                    lastLetterIndex = j;
+                                    break;
+                                }
+                            }
+                            if (lastLetterIndex != -1) {
+                                char lastLetter = word.charAt(lastLetterIndex);
+                                String newWord = "";
+                                for (int j = 0; j < word.length() - 1; j++) {
+                                    if (!Character.isLetterOrDigit(word.charAt(j)) || word.charAt(j) != lastLetter) {
+                                        newWord += word.charAt(j);
+                                    }
+                                }
+                                newWord += lastChar;
+                                words[i] = newWord;
+                            }
+                        } else {
+                            char lastLetter = lastChar;
+                            String newWord = "";
+                            for (int j = 0; j < word.length() - 1; j++) {
+                                if (!Character.isLetterOrDigit(word.charAt(j)) || word.charAt(j) != lastLetter) {
+                                    newWord += word.charAt(j);
+                                }
+                            }
+                            newWord += lastLetter;
+                            words[i] = newWord;
+                        }
+                    }
+                    System.out.print("\n Final string: ");
+                    System.out.println(String.join(" ", words));
+                } catch (Exception e) {
+                    System.out.println("An error occurred: " + e.getMessage());
+                }
+            }
+        }
+    }
+}
