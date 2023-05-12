@@ -15,17 +15,17 @@ class Lab3
         int[] amountOfWords = new int[textSplit.Length];
         for (int i = 0; i < textSplit.Length; i++)
         {
-            string[] words = textSplit[i].Trim().Split(' ');
+            string[] words = textSplit[i].Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             amountOfWords[i] = words.Length;
         }
 
         // створюємо Dictionary, де ключ - кількість слів у реченні, а значення - речення
-        Dictionary<int, string> sentenceDictionary = new Dictionary<int, string>();
+        Dictionary<string, int> sentenceDictionary = new Dictionary<string, int>();
         for (int i = 0; i < textSplit.Length; i++)
         {
-            sentenceDictionary.Add(amountOfWords[i], textSplit[i]);
+            sentenceDictionary.Add(textSplit[i],amountOfWords[i] );
         }
-        var sortedDict = sentenceDictionary.OrderBy(x => x.Key).ToDictionary(x => x.Value, x => x.Key);
+        var sortedDict = sentenceDictionary.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
 
         Console.WriteLine(String.Join(";", sortedDict.Keys));
