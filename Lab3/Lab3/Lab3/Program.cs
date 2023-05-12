@@ -6,7 +6,7 @@ class Lab3
     public static void Main(string[] args)
     {
         string text = "Вухатий великий синiй слон. Яблуко в саду. Зелене яблуко? Груша. Жовта слива висить у саду!";
-        Console.WriteLine(text+ "-Наш текст;");
+        Console.WriteLine(text );
 
         // розділяємо текст на окремі речення
         string[] textSplit = text.Split(new[] { '.', '?', '!' }, StringSplitOptions.RemoveEmptyEntries);
@@ -25,14 +25,9 @@ class Lab3
         {
             sentenceDictionary.Add(amountOfWords[i], textSplit[i]);
         }
+        var sortedDict = sentenceDictionary.OrderBy(x => x.Key).ToDictionary(x => x.Value, x => x.Key);
 
-        // збираємо відсортований текст з Dictionary відсортованих речень
-        string sortedText = "";
-        foreach (string s in sentenceDictionary.Values)
-        {
-            sortedText += $"\n{s.Trim()}";
-        }
-        Console.WriteLine(sortedText);
-        Console.ReadLine();
+
+        Console.WriteLine(String.Join(";", sortedDict.Keys));
     }
 }
