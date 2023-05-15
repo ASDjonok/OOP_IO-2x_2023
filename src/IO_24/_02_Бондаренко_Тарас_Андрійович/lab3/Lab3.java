@@ -15,6 +15,7 @@ public class Lab3 {
         wordList.clear();
         wordList.addAll(wordSet);
         wordList.sort(String::compareToIgnoreCase);
+        wordList.sort((o1, o2) -> o1.compareToIgnoreCase(o2));
 
         for (String element : wordList) {
             System.out.println(element);
