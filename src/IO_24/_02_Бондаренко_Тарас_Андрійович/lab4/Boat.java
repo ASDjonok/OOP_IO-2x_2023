@@ -4,11 +4,11 @@ package IO_24._02_Бондаренко_Тарас_Андрійович.lab4;
  * Class that represents a boat with different characteristics.
  */
 public class Boat {
-    private String name;
-    private int price;
-    private int mass;
-    private int age;
-    private String type;
+    private final String name;
+    private final int price;
+    private final int mass;
+    private final int age;
+    private final String type;
 
     public Boat(String name, int price, int mass, int age, String type) {
         this.name = name;
