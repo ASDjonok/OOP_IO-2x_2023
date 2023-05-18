@@ -3,7 +3,7 @@ package lab4;
 /**
  * My class Furniture.
  */
-public class Furniture {
+public class Furniture<T> {
     /**
      *
      */
@@ -12,6 +12,12 @@ public class Furniture {
     private int height;
     private int width;
     private int price;
+
+    private T additional;
+
+    public void setAdditional(T additional) {
+        this.additional = additional;
+    }
 
     /**
      *
@@ -22,11 +28,16 @@ public class Furniture {
      * @param price
      */
     public Furniture(String material, int length, int height, int width, int price) {
-        this.material = material;
+//        this.material = material;
+        setMaterial(material);
         this.length = length;
         this.height = height;
         this.width = width;
         this.price = price;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
     }
 
     public String getMaterial() {
@@ -52,4 +63,15 @@ public class Furniture {
     /*public Furniture() {
 
     }*/
+
+    @Override
+    public String toString() {
+        return "Furniture{" +
+                "material='" + material + '\'' +
+                ", length=" + length +
+                ", height=" + height +
+                ", width=" + width +
+                ", price=" + price +
+                '}';
+    }
 }
