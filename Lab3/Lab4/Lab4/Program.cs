@@ -66,7 +66,7 @@ namespace ConsoleApp1
             // Сортування масиву за ціною за зростанням
             var sorted = furnitureArr.OrderBy(ob => ob.price).ToArray();
             // Вивести відсортований масив
-            Console.WriteLine("Вiдсортований за цiною (зростанням):");
+            Console.WriteLine("Вiдсортований за цiною (за зростанням):");
             foreach (Furniture f in sorted)
             {
                 Console.WriteLine(f.getType() + " - " + f.getPrice() + " грн;");
@@ -75,7 +75,7 @@ namespace ConsoleApp1
             // Сортування масиву за кількістю за спаданням
             var sortedReversery = furnitureArr.OrderBy(ob => ob.amount).ToArray().Reverse();
             // Вивести відсортований масив
-            Console.WriteLine("Вiдсортований за кiлькiстю (спаданням):");
+            Console.WriteLine("Вiдсортований за кiлькiстю (за спаданням):");
             foreach (Furniture f in sortedReversery)
             {
                 Console.Write($"{f.getType()} - {f.getAmount()}; " );
