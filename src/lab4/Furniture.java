@@ -1,9 +1,11 @@
 package lab4;
 
-/**
- * My class Furniture.
- */
-public class Furniture<T> {
+
+///**
+// * My class Furniture.
+// */
+//todo uncomment /*<Furniture>*/
+public /*abstract*/ class Furniture/*<T>*/ implements Comparable/*<Furniture>*/{
     /**
      *
      */
@@ -13,11 +15,11 @@ public class Furniture<T> {
     private int width;
     private int price;
 
-    private T additional;
+//    private T additional;
 
-    public void setAdditional(T additional) {
-        this.additional = additional;
-    }
+//    public void setAdditional(T additional) {
+//        this.additional = additional;
+//    }
 
     /**
      *
@@ -73,5 +75,11 @@ public class Furniture<T> {
                 ", width=" + width +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return /*this.*/price - ((Furniture) o).price;
+//        return /*this.*/material.compareTo(((Furniture) o).material);
     }
 }

@@ -4,11 +4,16 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(Integer.MIN_VALUE - 1);
 //        todo Comparable
         //todo equals+hashcode
 //        todo JavaDoc
-        final Furniture<Furniture> furniture1 = new Furniture<>("A", 1, 1, 1, 1);
-        final Furniture<String> furniture2 = new Furniture<>("D", 1, 1, 1, 4);
+        final Furniture/*<Furniture>*/ furniture1 = new Furniture("A", 1, 1, 1, 1);
+        final Furniture/*<String>*/ furniture2 = new Furniture("F", 1, 1, 1, 4);
+
+        System.out.println(furniture1.compareTo(furniture2));
+        System.out.println(furniture1.compareTo("furniture2"));
+
         Furniture[] furnitureArray = {
                 furniture1,
                 furniture2,
@@ -22,8 +27,8 @@ public class Main {
         }
         System.out.println("+++++++++++++");
 
-        furniture1.setAdditional(new Furniture("Y", 1, 1, 1, 0));
-        furniture2.setAdditional("new Furniture(\"Y\", 1, 1, 1, 0)");
+//        furniture1.setAdditional(new Furniture("Y", 1, 1, 1, 0));
+//        furniture2.setAdditional("new Furniture(\"Y\", 1, 1, 1, 0)");
 
 //        furnitureArray[0].setMaterial("E");
 
