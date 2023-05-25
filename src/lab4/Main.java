@@ -1,18 +1,18 @@
 package lab4;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println(Integer.MIN_VALUE - 1);
-//        todo Comparable
         //todo equals+hashcode
 //        todo JavaDoc
         final Furniture/*<Furniture>*/ furniture1 = new Furniture("A", 1, 1, 1, 1);
         final Furniture/*<String>*/ furniture2 = new Furniture("F", 1, 1, 1, 4);
 
         System.out.println(furniture1.compareTo(furniture2));
-        System.out.println(furniture1.compareTo("furniture2"));
+//        System.out.println(furniture1.compareTo("furniture2"));
 
         Furniture[] furnitureArray = {
                 furniture1,
@@ -41,6 +41,40 @@ public class Main {
 
 //        todo check
         Arrays.sort(furnitureArray, (o1, o2) -> Integer.compare(o2.getPrice(), o1.getPrice()));
+        for (Furniture furniture : furnitureArray) {
+            System.out.println(furniture);
+        }
+
+        System.out.println("+++++++++++++");
+
+        /*Arrays.sort(furnitureArray);
+        for (Furniture furniture : furnitureArray) {
+            System.out.println(furniture);
+        }
+
+        System.out.println("+++++++++++++");*/
+
+        /*Arrays.sort(furnitureArray, new PriceFurnitureComparator());
+        for (Furniture furniture : furnitureArray) {
+            System.out.println(furniture);
+        }
+
+        System.out.println("+++++++++++++");*/
+
+        /*Arrays.sort(furnitureArray, new Comparator<Furniture>() {
+            @Override
+            public int compare(Furniture o1, Furniture o2) {
+                return o1.getMaterial().compareTo(o2.getMaterial());
+            }
+        });*/
+//        Arrays.sort(furnitureArray, (o1, o2) -> o1.getMaterial().compareTo(o2.getMaterial()));
+//        Arrays.sort(furnitureArray, Comparator.comparing(Furniture::getMaterial));
+//        Arrays.sort(furnitureArray, Comparator.comparing(Furniture::getMaterial).reversed());
+//        Arrays.sort(furnitureArray, Comparator.comparing(Furniture::getPrice)
+//        .thenComparing(Furniture::getMaterial).reversed());
+        Arrays.sort(furnitureArray, Comparator.comparing(Furniture::getPrice)
+                .thenComparing(Comparator.comparing(Furniture::getMaterial).reversed()));
+
         for (Furniture furniture : furnitureArray) {
             System.out.println(furniture);
         }

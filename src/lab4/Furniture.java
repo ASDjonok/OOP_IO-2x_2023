@@ -5,7 +5,7 @@ package lab4;
 // * My class Furniture.
 // */
 //todo uncomment /*<Furniture>*/
-public /*abstract*/ class Furniture/*<T>*/ implements Comparable/*<Furniture>*/{
+public /*abstract*/ class Furniture/*<T>*/ implements Comparable<Furniture> {
     /**
      *
      */
@@ -22,7 +22,6 @@ public /*abstract*/ class Furniture/*<T>*/ implements Comparable/*<Furniture>*/{
 //    }
 
     /**
-     *
      * @param material
      * @param length
      * @param height
@@ -77,9 +76,18 @@ public /*abstract*/ class Furniture/*<T>*/ implements Comparable/*<Furniture>*/{
                 '}';
     }
 
+//    @Override
+//    public int compareTo(Object o) {
+//        return /*this.*/price - ((Furniture) o).price;
+////        return /*this.*/material.compareTo(((Furniture) o).material);
+//    }
+
     @Override
-    public int compareTo(Object o) {
-        return /*this.*/price - ((Furniture) o).price;
-//        return /*this.*/material.compareTo(((Furniture) o).material);
+    public int compareTo(Furniture o) {
+        final int priceDifference = price - o.price;
+        return priceDifference != 0
+                ? priceDifference
+//                : -material.compareTo(o.material);
+                : o.material.compareTo(material);
     }
 }
