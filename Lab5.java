@@ -1,9 +1,11 @@
 public class Lab5 {
     public static void main(String[] args) {
         StringBuilder txt = new StringBuilder("соціальна мережа, яка є мережею мікроблогів. Дає змогу користувачам надсилати короткі текстові повідомлення (до 2802 символів, до 2017 року — до 140 символів), використовуючи SMS,");
+        System.out.println("Початковий текст:");
         System.out.println(txt);
         Text text = new Text(txt);
         StringBuilder result = text.splitText();
+        System.out.println("Змінений текст:");
         System.out.println(result);
     }
 }
