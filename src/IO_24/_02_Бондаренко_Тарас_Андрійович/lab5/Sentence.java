@@ -43,11 +43,6 @@ public class Sentence {
             System.out.println(word);
         }
     }
-
-    //    public static String[] getSortedWordsByFirstLetter() {
-//
-//        return Sentence.getSortedWordsByFirstLetter(sentences);
-//    }
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
