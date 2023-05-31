@@ -30,9 +30,7 @@ public class Sentence {
         HashSet<String> uniqueWords = new HashSet<>();
 
         for (String word : words) {
-            if (!word.isEmpty()) {
-                uniqueWords.add(word.toLowerCase());
-            }
+            uniqueWords.add(word.toLowerCase());
         }
 
         String[] uniqueSortedWords = uniqueWords.toArray(new String[0]);
