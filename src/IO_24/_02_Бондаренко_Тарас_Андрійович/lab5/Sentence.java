@@ -25,19 +25,19 @@ public class Sentence {
             allWords.append(sentence).append(" ");
         }
 
-        String[] words = allWords.toString().split("\\W+"); // Remove punctuation marks
+        String[] words = allWords.toString().split("\\W+");
 
         HashSet<String> uniqueWords = new HashSet<>();
 
         for (String word : words) {
-            if (!word.isEmpty()) { // Ignore empty words
-                uniqueWords.add(word.toLowerCase()); // Convert word to lowercase and add to HashSet
+            if (!word.isEmpty()) {
+                uniqueWords.add(word.toLowerCase());
             }
         }
 
         String[] uniqueSortedWords = uniqueWords.toArray(new String[0]);
 
-        Arrays.sort(uniqueSortedWords); // Sort unique words by the first letter
+        Arrays.sort(uniqueSortedWords);
 
         for (String word : uniqueSortedWords) {
             System.out.println(word);
