@@ -6,10 +6,14 @@ import java.util.Comparator;
 public class Main {
     public static void main(String[] args) {
         System.out.println(Integer.MIN_VALUE - 1);
-        //todo equals+hashcode
-//        todo JavaDoc
-        final Furniture/*<Furniture>*/ furniture1 = new Furniture("A", 1, 1, 1, 1);
-        final Furniture/*<String>*/ furniture2 = new Furniture("F", 1, 1, 1, 4);
+        /*final*/ Furniture/*<Furniture>*/ furniture1 = new Furniture("A", 1, 1, 1, 1);
+        final Furniture/*<String>*/ furniture2 = new Furniture("A", 2, 1, 1, 1);
+
+//        furniture1 = null;
+
+        System.out.println(furniture1.equals(furniture2));
+        System.out.println(furniture1.hashCode());
+        System.out.println(furniture2.hashCode());
 
         System.out.println(furniture1.compareTo(furniture2));
 //        System.out.println(furniture1.compareTo("furniture2"));

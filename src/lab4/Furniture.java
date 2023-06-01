@@ -1,13 +1,16 @@
 package lab4;
 
 
-///**
-// * My class Furniture.
-// */
+import java.util.Objects;
+
+/**
+ * My class Furniture.
+ */
 //todo uncomment /*<Furniture>*/
 public /*abstract*/ class Furniture/*<T>*/ implements Comparable<Furniture> {
+
     /**
-     *
+     * Material with which furniture was made of
      */
     private String material;
     private int length;
@@ -22,7 +25,9 @@ public /*abstract*/ class Furniture/*<T>*/ implements Comparable<Furniture> {
 //    }
 
     /**
-     * @param material
+     * Our class constructor.
+     *
+     * @param material Material with which furniture was made of
      * @param length
      * @param height
      * @param width
@@ -89,5 +94,23 @@ public /*abstract*/ class Furniture/*<T>*/ implements Comparable<Furniture> {
                 ? priceDifference
 //                : -material.compareTo(o.material);
                 : o.material.compareTo(material);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Furniture furniture = (Furniture) o;
+        return length == furniture.length && height == furniture.height && width == furniture.width
+                && price == furniture.price && material.equals(furniture.material);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(material, length, height, width, price);
     }
 }
