@@ -11,10 +11,9 @@ class Lab6
 {
     public static void Main(string[] args)
     {
-        // Create a list of Wagons
-        List<Wagons> wagons = new List<Wagons>();
+        List<Wagons> wagons = new List<Wagons>(); //створюємо лист-список вагонів;                      
 
-        // Add some wagons to the list
+        // Додаємо вагони за допомогою класу Wagons;
         wagons.Add(new Wagons.PassengerWagons("Пасажирський", 100, 100, "Вищий", 10));
         wagons.Add(new Wagons.PassengerWagons("Пасажирський", 50, 48, "Середнiй", 20));
         wagons.Add(new Wagons.PassengerWagons("Пасажирський", 20, 15, "Низький", 30));
@@ -22,8 +21,8 @@ class Lab6
         wagons.Add(new Wagons.FreightWagons("Вантажний", 20, 20));
         wagons.Add(new Wagons.FreightWagons("Вантажний", 30, 30));
 
-        // Display the list of wagons
-        Console.WriteLine("Усi вагони:");
+        
+        Console.WriteLine("Усi вагони:");  //відображення всіх вагонів;
 
         foreach (Wagons wagon in wagons)
         {
@@ -31,15 +30,13 @@ class Lab6
                               " валiз/контейнерiв, " + wagon.GetComfort() + ", " + wagon.GetAmount() + ";");
         }
 
-        int amountOfPassangers = 0;
+        int amountOfPassangers = 0;  //обчислення загальної кількості пасажирів;
         foreach (Wagons p in wagons)
         {
             amountOfPassangers += p.GetPassengers();
         }
 
-        //Array.Sort(wagons, Comparer<Wagons>.Create((x, y) => x.GetComfort.CompareTo(y.GetComfort())));
-
-        var sorted = wagons.OrderByDescending(ob => ob.GetComfort()).ToArray();
+        var sorted = wagons.OrderByDescending(ob => ob.GetComfort()).ToArray(); //сортування вагонів за рівнем комфорту;
         
         Console.WriteLine("\nКiлькiсть пасажирiв у пасажирському вагонi: " + amountOfPassangers + ";");
         Console.WriteLine("\nВеддiть мiнiмальну кiлькiсть пасажирiв: ");
@@ -48,14 +45,14 @@ class Lab6
         var maxPassangers = Convert.ToInt32(Console.ReadLine());
         foreach (Wagons t in wagons)
         {
-            if (t.GetPassengers() != null && t.GetPassengers() >= minPassangers && t.GetPassengers() <= maxPassangers)
+            if (t.GetPassengers() != null && t.GetPassengers() >= minPassangers && t.GetPassengers() <= maxPassangers) //пошук вагону за кількістю пасажирів;
             {
                 Console.Write(t.GetType() + " - " + t.GetPassengers()+"; ");
             }
             else
             {
                 throw (new InvalidOperationException("Немає такого вагону;"));
-                break;
+                
             }
 
         }
@@ -70,7 +67,7 @@ class Lab6
         private string comfort; // рейтиг комфорту вагону
         private int amount; // кількість вагонів
 
-        public Wagons(string type, int? passengers, int? baggage, string comfort, int amount)
+        public Wagons(string type, int? passengers, int? baggage, string comfort, int amount)   //конструктор вагонів;
         {
             this.type = type;
             this.passengers = Convert.ToInt32(passengers);
@@ -79,7 +76,7 @@ class Lab6
             this.amount = amount;
         }
 
-        public string GetType()
+        public string GetType()         //геттери атрибутів класу;
         {
             return type;
         }
@@ -104,7 +101,7 @@ class Lab6
             return amount;
         }
 
-        // підклас Пасажирський вагон
+        // підклас Пасажирський вагон який наслідує батьківський клас Вагони;
         public class PassengerWagons : Wagons
         {
             public PassengerWagons(string type, int passengers, int baggage, string comfort, int amount) : base(type,
@@ -113,7 +110,7 @@ class Lab6
             }
         }
 
-        // підклас Вантажний вагон
+        // підклас Вантажний вагон який наслідує батьківський клас Вагони;
         public class FreightWagons : Wagons
         {
             public FreightWagons(string type, int baggage, int amount) : base(type, null, baggage, null, amount)
