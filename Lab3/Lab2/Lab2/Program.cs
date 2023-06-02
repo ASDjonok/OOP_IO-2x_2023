@@ -5,20 +5,20 @@ public class Laba2
     public static void Main(string[] args)
     {
         const int a = 2;
-        int[,] b = new[,]
+        int[,] b = new[,] //створення матриці;
         {
              { 1, 2, 8 },
              { 3, 4, 5 },
              { 6, 7, 9 }
         };
-        int rows = b.GetLength(0);
-        int cols = b.GetLength(1);
-       for (int i = 0; i < rows; i++)
+        int rows = b.GetLength(0); //отримання довжини рядків
+        int cols = b.GetLength(1); //отримання довжини стовпців
+       for (int i = 0; i < rows; i++) 
         {
             int Avg = 0;
             for (int j = 0; j < cols; j++)
             {
-                Console.Write(b[i, j] + " ");
+                Console.Write(b[i, j] + " ");      // перебір матриці для обчислення середнього значення рядка
                 Avg += b[i, j];
             }
             Avg = Avg / cols;
@@ -31,7 +31,7 @@ public class Laba2
        {
            for (int y = 0; y < cols; y++)
            {
-               Console.Write(b[x, y] * a + " ");
+               Console.Write(b[x, y] * a + " "); //виведення матриці, помноженої на константу
 
            }
            Console.WriteLine(" ");
