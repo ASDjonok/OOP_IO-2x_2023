@@ -3,8 +3,8 @@ package OOP.Java.lab_5
 class Text(textString: String) {
     var textArray = arrayOf<Pair<Sentence, Punctuation>>()
     var rawText: String = ""
-    val arrayOfSentences = splitSentences(textString)
-    val arrayOfPunctuations: Array<Punctuation> = splitPunctuation(textString)
+//    val arrayOfSentences = splitSentences(textString)
+//    val arrayOfPunctuations: Array<Punctuation> = splitPunctuation(textString)
 
     init {
         val arrayOfSentences = splitSentences(textString)
@@ -46,9 +46,6 @@ class Text(textString: String) {
         return results.maxBy { it.length }
     }
 
-    fun checkStringInBoundaries(stringToCheck: String): Boolean {
-        return stringToCheck.equals(stringToCheck.reversed(), true)
-    }
 
     override fun toString(): String {
         var text = arrayOf<String>()
