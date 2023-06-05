@@ -9,5 +9,5 @@ class Word(var letters: Array<Letter>) {
     }
     constructor(
         word: String
-    ) : this((word.toCharArray().map { n -> Letter(n) }).toTypedArray())
+    ) : this((word.toCharArray().map { letter -> Letter(letter) }).toTypedArray())
 }

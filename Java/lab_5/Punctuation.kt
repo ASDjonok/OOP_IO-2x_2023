@@ -8,4 +8,8 @@ class Punctuation(var punctuationMark: String) {
             this.punctuationMark = ""
         }
     }
+
+    override fun toString(): String {
+        return punctuationMark
+    }
 }
