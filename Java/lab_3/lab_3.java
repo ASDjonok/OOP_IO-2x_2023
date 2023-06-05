@@ -13,8 +13,8 @@ public class lab_3 {
             leftBoundary--;
             rightBoundary++;
         }
-        // if it's length is greater than maxLength update
-        // maxLength and res
+        // if it's length is greater than maxStrLength update
+        // maxLength and result
         if (rightBoundary - leftBoundary - 1 >= maxStrLength) {
             result = string.substring(leftBoundary + 1, rightBoundary);
             maxStrLength = rightBoundary - leftBoundary - 1;
