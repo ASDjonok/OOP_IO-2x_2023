@@ -15,11 +15,11 @@ class Sentence(sentenceString: String) {
         }
     }
 
-    private fun splitWords(sentenceString: String): Array<Word>{
+    private fun splitWords(sentenceString: String): Array<Word> {
         return sentenceString.split("[\\p{Punct}\\s]+".toRegex()).filter { it.isNotEmpty() }.map { word -> Word(word) }.toTypedArray()
     }
 
-    private fun splitPunctuation(sentenceString: String): Array<Punctuation>{
+    private fun splitPunctuation(sentenceString: String): Array<Punctuation> {
         return sentenceString.split(" ").map { word -> Punctuation(word.last().toString()) }.toTypedArray()
     }
 

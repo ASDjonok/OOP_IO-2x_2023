@@ -4,7 +4,7 @@ class Punctuation(var punctuationMark: String) {
     private val punctuationMarkOptions: Regex = Regex("\\p{Punct}")
 
     init {
-        if (!punctuationMarkOptions.containsMatchIn(punctuationMark)){
+        if (!punctuationMarkOptions.containsMatchIn(punctuationMark)) {
             this.punctuationMark = ""
         }
     }
