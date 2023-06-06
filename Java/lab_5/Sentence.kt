@@ -1,18 +1,12 @@
 package OOP.Java.lab_5
 
 class Sentence(sentenceString: String) {
-    var sentenceArray = arrayOf<Pair<Word, Punctuation>>()
-    val arrayOfWords: Array<Word> = splitWords(sentenceString)
-    val arrayOfPunctuations: Array<Punctuation> = splitPunctuation(sentenceString)
+    var sentenceArray = Pair<Array<Word>, Array<Punctuation>>(splitWords(sentenceString), splitPunctuation(sentenceString))
 
     init {
 //        val arrayOfWords: Array<Word> = splitWords(sentenceString)
 //        val arrayOfPunctuations: Array<Punctuation> = splitPunctuation(sentenceString)
 
-
-        for (i in arrayOfWords.indices) {
-            sentenceArray += Pair(arrayOfWords[i], arrayOfPunctuations[i])
-        }
     }
 
     private fun splitWords(sentenceString: String): Array<Word> {
@@ -23,9 +17,20 @@ class Sentence(sentenceString: String) {
         return sentenceString.split(" ").map { word -> Punctuation(word.last().toString()) }.toTypedArray()
     }
 
+    fun getAllLetters(): Array<Letter> {
+        var allLetters = arrayOf<Letter>()
+        this.sentenceArray.first.forEach { allLetters += it.letters }
+        /*for (i: Word in this.sentenceArray.first) {
+            println("${i} ${i::class.simpleName} ${i.letters}")
+        }*/
+        return allLetters
+    }
+
     override fun toString(): String {
         var sentence = arrayOf<String>()
-        this.sentenceArray.forEach { sentence += it.first.toString() + it.second.toString() }
+        for (i in this.sentenceArray.first.indices) {
+            sentence += this.sentenceArray.first[i].toString() + this.sentenceArray.second[i].toString()
+        }
         return sentence.joinToString(" ")
     }
 }

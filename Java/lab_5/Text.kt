@@ -1,23 +1,7 @@
 package OOP.Java.lab_5
 
 class Text(textString: String) {
-    var textArray = arrayOf<Pair<Sentence, Punctuation>>()
-    var rawText: String = ""
-//    val arrayOfSentences = splitSentences(textString)
-//    val arrayOfPunctuations: Array<Punctuation> = splitPunctuation(textString)
-
-    init {
-        val arrayOfSentences = splitSentences(textString)
-        val arrayOfPunctuations: Array<Punctuation> = splitPunctuation(textString)
-
-        for (i in arrayOfSentences.indices) {
-            textArray += Pair(arrayOfSentences[i], arrayOfPunctuations[i])
-        }
-
-        this.rawText = getRawTextString(arrayOfSentences)
-
-
-    }
+    var textArray = Pair(splitSentences(textString), splitPunctuation(textString))
 
     private fun splitSentences(textString: String): Array<Sentence> {
         return textString.split("[.!?] ?".toRegex()).filter { it.isNotEmpty() }.map { sentence -> Sentence(sentence) }.toTypedArray()
@@ -27,29 +11,54 @@ class Text(textString: String) {
         return textString.split("(?<=[.!?]) ?".toRegex()).filter { it.isNotEmpty() }.map { sentence -> Punctuation(sentence.last().toString()) }.toTypedArray()
     }
 
-    private fun getRawTextString(arrayOfSentences: Array<Sentence>): String {
-        return arrayOfSentences.joinToString("") { sentence -> sentence.arrayOfWords.joinToString("") }
+    fun getAllLetters(): Array<Letter> {
+        var allLetters = arrayOf<Letter>()
+        this.textArray.first.forEach { allLetters += it.getAllLetters() }
+        return allLetters
     }
 
     fun palindromeSearch(): String {
         var results = arrayOf<String>()
-        for (leftBoundary in 0 until this.rawText.length) {
-            for (rightBoundary in this.rawText.length downTo leftBoundary + 1) {
-                val subToC = this.rawText.substring(leftBoundary, rightBoundary)
+        val letters = this.getAllLetters()
+        for (leftBoundary in letters.indices) {
+            for (rightBoundary in letters.lastIndex downTo leftBoundary + 1) {
+                val subToC = letters.sliceArray(leftBoundary..rightBoundary)
+//                println(subToC.joinToString(""))
 
-                if (subToC.first().equals(subToC.last(), true) && subToC.equals(subToC.reversed(), true) && subToC.length >= 3) {
-//                    println(subToC)
-                    results += subToC
+                if (subToC.first().equals(subToC.last(), true) && subToC.size >= 3 && this.checkReverse(subToC)) {
+//                    println(subToC.joinToString(""))
+                    results += subToC.joinToString("")
                 }
             }
         }
         return results.maxBy { it.length }
     }
 
+    private fun checkReverse(substring: Array<Letter>): Boolean {
+        var leftBoundary = 0
+        var rightBoundary = substring.lastIndex
+        var result = false
+        var correction = 0
+
+        if (substring.size % 2 != 0) {
+            correction = 1
+        }
+
+        while (leftBoundary < substring.size / 2 && rightBoundary >= substring.size / 2 + correction) {
+            leftBoundary++
+            rightBoundary--
+            result = substring[leftBoundary].equals(substring[rightBoundary], true)
+        }
+
+        return result
+    }
+
 
     override fun toString(): String {
         var text = arrayOf<String>()
-        this.textArray.forEach { text += it.first.toString() + it.second.toString() }
+        for (i in this.textArray.first.indices) {
+            text += this.textArray.first[i].toString() + this.textArray.second[i].toString()
+        }
         return text.joinToString(" ")
     }
 }
