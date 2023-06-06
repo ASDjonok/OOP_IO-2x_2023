@@ -13,7 +13,7 @@ class Sentence {
     const sortedWords = words.sort((first, second) => {
       const vowelsOfFirstWord = first.match(vowels)? first.match(vowels): [];
       const vowelsOfSecondWord =  second.match(vowels)? second.match(vowels): [];
-      return  vowelsOfSecondWord.length - vowelsOfFirstWord.length;
+      return  vowelsOfFirstWord.length-vowelsOfSecondWord.length;
     });
     return sortedWords.join(' ');
   }
