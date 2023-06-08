@@ -29,9 +29,7 @@ fun main() {
 
     println("$chromatica\n")
 
-    chromatica.tracks.sortBy { it.style }
-
-    println("Album sorted by musical style:\n$chromatica\n")
+    println("${chromatica.albumName} tracks sorted by musical style:\n${chromatica.tracks.sortedBy { it.style }.joinToString("\n")}\n")
 
     val durationRange = 1.minutes.. 3.minutes + 30.seconds
 
