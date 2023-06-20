@@ -1,5 +1,8 @@
 package OOP.Java.lab_2;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 
 public class lab_2 {
@@ -23,13 +26,15 @@ public class lab_2 {
         return read_variable;
     }
 
+    @NotNull
     public static String format(int number) {
         int width = String.valueOf(number).length() + 1;
 
         return "|%" + width + "d ";
     }
 
-    public static double average(short[] row) {
+    @Contract(pure = true)
+    public static double average(@NotNull short[] row) {
         short sum = 0;
 
         for (short element : row) {
