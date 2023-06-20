@@ -13,7 +13,7 @@ fn read_row() -> Vec<i16> {
         let raw_row: String = text_io::read!("{}\n");
         let trimmed_row: &str = raw_row.trim();
         match trimmed_row.split(" ").all(|value| {
-            value.chars().all(|char| char.is_numeric())
+            value.chars().all(|char| char.is_numeric() || char == '-')
                 && value.parse::<i32>().unwrap() <= i16::MAX as i32
                 && value.parse::<i32>().unwrap() >= i16::MIN as i32
         }) {
@@ -37,10 +37,11 @@ fn generate_row(row_index: u16, length: u16) -> Vec<i16> {
 fn read_matrix() -> Vec<Vec<i16>> {
     let rows: u16 = protected_u16_read("the number of rows");
     loop {
-        print!("Generate matrix or input manually [g/i]: ");
+        print!("Generate [s]quare or [r]ectangle matrix or [i]nput manually [s/r/i]: ");
         let option: String = text_io::read!();
         match option.to_lowercase().as_str() {
-            "g" => {
+            "s" => return (0..rows).map(|i| generate_row(i, rows)).collect(),
+            "r" => {
                 let columns: u16 = protected_u16_read("the number of columns");
                 return (0..rows).map(|i| generate_row(i, columns)).collect();
             }
@@ -81,22 +82,16 @@ fn average_of_row(row: &Vec<i16>) -> f32 {
 }
 
 fn format_matrix(matrix: &Vec<Vec<i16>>) -> String {
-    let max_element_width = matrix
+    let max_width = matrix
         .iter()
-        .map(|row| row.iter().max().unwrap())
+        .map(|row| {
+            row.iter()
+                .map(|element| element.to_string().len())
+                .max()
+                .unwrap()
+        })
         .max()
-        .unwrap()
-        .to_string()
-        .len();
-    let min_element_width = matrix
-        .iter()
-        .map(|row| row.iter().min().unwrap())
-        .min()
-        .unwrap()
-        .to_string()
-        .len();
-
-    let max_width = max_element_width.max(min_element_width);
+        .unwrap();
 
     let mut formatted_matrix: String = matrix
         .iter()
@@ -112,6 +107,20 @@ fn format_matrix(matrix: &Vec<Vec<i16>>) -> String {
     return formatted_matrix;
 }
 
+fn format_column(column: &Vec<f32>) -> String {
+    let max_width = column
+        .iter()
+        .map(|element| element.to_string().len())
+        .max()
+        .unwrap();
+
+    return column
+        .iter()
+        .map(|element| format!("| {:max_width$} |", element))
+        .collect::<Vec<String>>()
+        .join("\n");
+}
+
 fn main() {
     let full_vec_test: Vec<Vec<i16>> = read_matrix();
     println!("\nMatrix B:\n{}\n", format_matrix(&full_vec_test));
@@ -124,8 +133,11 @@ fn main() {
         .iter()
         .map(|row| average_of_row(row))
         .collect();
-    println!("Averages for each row in a×B:");
-    row_averages
-        .iter()
-        .for_each(|element| println!("{}", element))
+    println!(
+        "Averages for each row in a×B:\n{}",
+        format_column(&row_averages)
+    );
+    /*row_averages
+    .iter()
+    .for_each(|element| println!("{}", element))*/
 }
