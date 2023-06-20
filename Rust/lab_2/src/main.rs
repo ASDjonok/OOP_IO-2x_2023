@@ -137,7 +137,4 @@ fn main() {
         "Averages for each row in a×B:\n{}",
         format_column(&row_averages)
     );
-    /*row_averages
-    .iter()
-    .for_each(|element| println!("{}", element))*/
 }
